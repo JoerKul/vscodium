@@ -8,7 +8,7 @@
 export APP_NAME="AX Code"
 export BINARY_NAME="axcode"
 export CI_BUILD="no"
-export GH_REPO_PATH="VSCodium/vscodium"
+export GH_REPO_PATH="joerkul/vscodium"
 export ORG_NAME="Siemens"
 export SHOULD_BUILD="yes"
 export SKIP_ASSETS="no"
@@ -24,7 +24,7 @@ export SHOULD_BUILD_REH_WEB="no"
 while getopts ":ilops" opt; do
   case "$opt" in
     i)
-      export BINARY_NAME="codium-insiders"
+      export BINARY_NAME="axcode-insiders"
       export VSCODE_QUALITY="insider"
       ;;
     l)
@@ -132,7 +132,7 @@ if [[ "${SKIP_BUILD}" == "no" ]]; then
     cp ./build/osx/include.gypi ~/.gyp/include.gypi
   fi
 
-  . build.sh
+  . build_ax.sh
 
   if [[ -f "./include_${OS_NAME}.gypi" ]]; then
     mv ~/.gyp/include.gypi.pre-vscodium ~/.gyp/include.gypi

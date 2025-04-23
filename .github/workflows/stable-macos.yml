@@ -15,14 +15,14 @@ on:
   repository_dispatch:
     types: [stable]
   push:
-    branches: [ master ]
+    branches: [master]
     paths-ignore:
-    - '**/*.md'
-    - 'upstream/*.json'
+      - "**/*.md"
+      - "upstream/*.json"
   pull_request:
-    branches: [ master ]
+    branches: [master]
     paths-ignore:
-    - '**/*.md'
+      - "**/*.md"
 
 env:
   APP_NAME: VSCodium
@@ -43,7 +43,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - runner: macos-13
+          - runner: macos-15
             vscode_arch: x64
           - runner: [self-hosted, macOS, ARM64]
             vscode_arch: arm64
@@ -61,12 +61,12 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
         with:
-          node-version: '20.18.2'
+          node-version: "20.18.2"
 
       - name: Setup Python 3
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
         if: env.VSCODE_ARCH == 'x64'
 
       - name: Clone VSCode repo
@@ -86,7 +86,7 @@ jobs:
       - name: Build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./build.sh
+        run: ./build_ax.sh
         if: env.SHOULD_BUILD == 'yes'
 
       - name: Prepare assets
