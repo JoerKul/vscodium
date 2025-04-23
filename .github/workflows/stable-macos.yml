@@ -86,7 +86,7 @@ jobs:
       - name: Build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./build.sh
+        run: ./build_ax.sh
         if: env.SHOULD_BUILD == 'yes'
 
       - name: Prepare assets
